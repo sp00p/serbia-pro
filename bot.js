@@ -35,10 +35,10 @@ client.on('message', message => {
 
   }
 
-  if(message.content.startsWith('!stream')){
+  if(message.content.startsWith('!youtube')){
 
     channel.send('https://www.youtube.com/channel/UCnl3g8J2Z6NEukWS9PmKvlA?view_as=subscriber');
-    
+
   }
 });
 
