@@ -34,6 +34,12 @@ client.on('message', message => {
     channel.send('helloing and mansallam bro');
 
   }
+
+  if(message.content.startsWith('!stream')){
+
+    channel.send('https://www.youtube.com/channel/UCnl3g8J2Z6NEukWS9PmKvlA?view_as=subscriber');
+    
+  }
 });
 
 client.login(auth.token);
