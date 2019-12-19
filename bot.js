@@ -31,6 +31,7 @@ client.on('ready', () => {
 
 client.on('guildMemberAdded', () =>{
   const channel = member.guild.channels.find(ch => ch.name === 'member-log');
+  const channel = member.guild.channels.find(ch => ch.name === 'member-log'); // Change to the channel you'd like to send message to
 
   if(!channel) return;
 
