@@ -30,7 +30,6 @@ client.on('ready', () => {
 });
 
 client.on('guildMemberAdded', () =>{
-  const channel = member.guild.channels.find(ch => ch.name === 'member-log');
   const channel = member.guild.channels.find(ch => ch.name === 'member-log'); // Change to the channel you'd like to send message to
 
   if(!channel) return;
@@ -45,28 +44,21 @@ client.on('message', message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
+  let commandFile = client.commands.get(cmd.slice(prefix.length));
+  if(commandFile) commandFile.run(client,message,args);
+
   if(message.content.includes('anime')){
 
-    channel.send("fucking you mom");
+    message.channel.send("fucking you mom");
 
-  }
-
-  if(message.content.startsWith('!stream')){
-
-    channel.send("https://www.twitch.tv/chrometheuss");
   }
 
   if(message.content.includes('helloing serbia pro')){
 
-    channel.send('helloing and mansallam bro');
+    message.channel.send('helloing and mansallam bro');
 
   }
 
-  if(message.content.startsWith('!youtube')){
-
-    channel.send('https://www.youtube.com/channel/UCnl3g8J2Z6NEukWS9PmKvlA?view_as=subscriber');
-
-  }
 });
 
-client.login(auth.token);
+client.login(botconfig.token);
