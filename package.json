@@ -10,13 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.5.1",
-    "ffmpeg": "0.0.4",
-    "ffmpeg-binaries": "^3.2.2",
-    "ffmpeg-static": "^3.0.0",
-    "node-opus": "^0.3.3",
-    "opusscript": "0.0.7",
-    "ytdl": "^1.1.0",
-    "ytdl-core": "^1.0.5"
+    "discord.js": "^11.5.1"
   }
 }
