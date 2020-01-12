@@ -2,8 +2,9 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const botconfig = require('./botconfig.json');
 const fs = require('fs');
-const prefix = '.';
 client.commands = new Discord.Collection();
+let prefix = botconfig.prefix;
+
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -35,17 +36,10 @@ client.on('guildMemberAdded', () =>{
   if(!channel) return;
 
   channel.send(`Welcome to the server, ${member}`);
+
 });
 
 client.on('message', message => {
-
-  let prefix = botconfig.prefix;
-  let messageArray = message.content.split(" ");
-  let cmd = messageArray[0];
-  let args = messageArray.slice(1);
-
-  let commandFile = client.commands.get(cmd.slice(prefix.length));
-  if(commandFile) commandFile.run(client,message,args);
 
   if(message.content.includes('anime')){
 
@@ -57,6 +51,23 @@ client.on('message', message => {
 
     message.channel.send('helloing and mansallam bro');
 
+  }
+
+  if(message.channel.name == "verify") {
+    if(message.content === `${prefix}verify`) {
+      const verifyRole = message.guild.roles.find("name", "Verified")
+      message.member.addRole(verifyRole);
+      message.author.send({ embed: {
+        color: 0xffffff,
+        title: "serbia pro Verification",
+        description: "you are now verified! :sunglasses:",
+        footer: {
+          text: "Created by Sean#0004"
+        },
+        timestamp: new Date()
+      }})
+      message.delete(100);
+    } else message.delete()
   }
 
 });
