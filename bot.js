@@ -1,9 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const botconfig = require('./botconfig.json');
+let prefix = botconfig.prefix;
 const fs = require('fs');
 client.commands = new Discord.Collection();
-let prefix = botconfig.prefix;
+client.login(botconfig.token);
 
 
 fs.readdir("./commands/", (err, files) => {
@@ -71,5 +72,3 @@ client.on('message', message => {
   }
 
 });
-
-client.login(botconfig.token);
